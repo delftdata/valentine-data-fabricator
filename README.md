@@ -1,6 +1,7 @@
 # Valentine Experiment Suite: Dataset Generator
 
-This repository contains the dataset generator used by the Valentine Experiment Suite. 
+This repository contains the dataset generator used by the Valentine Experiment Suite.  
+For extended details please refer to the paper.
 
 ## Prerequisites
 
