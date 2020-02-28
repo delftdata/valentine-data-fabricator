@@ -9,7 +9,8 @@ To run the generator you need:
 
 ## Dataset Generator
 
-The Dataset Generator was implemented from scratch to address the needs of Valentine. As explained in the corresponding
+The Dataset Generator was implemented from scratch to address the needs of Valentine. It takes as input a given table and it
+outputs two tables, derived from the horizontal/vertical partition of the first.  As explained in the corresponding
 paper, the Dataset Generator aims to create unionable, view-unionable, joinable and semantically joinable pairs of tables
 that serve as datasets upon which the experments of Valentine are conducted. The strategies and the techniques used from
 the generator are on the same spirit with the existing works. They are presented in details in the aforementioned paper. 
@@ -33,6 +34,14 @@ with strings, typos, based on keyboard proximity, are inserted in the values of 
 only columns, the assumption that values follow a half normal distribution is made. Based on that the values are recomputed
 after randomly changing a bit the mean and the standard deviation of the distribution. 
 
+## Output
+
+The output of the generator consists of:
+- a json file containing the mapping between the two tables.
+- a json file containing the schema of the first (suffixed as source) table.
+- a csv file containing the data of the first (suffixed as source) table, including a header with the column names.
+- a json file containing the schema of the second (suffixed as target) table.
+- a csv file containing the data of the second (suffixed as target) table, including a header with the column names.
 
 ## Execution Instructions
 
