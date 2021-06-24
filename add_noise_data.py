@@ -4,6 +4,7 @@ import random
 import string
 import multiprocessing as mp
 from tqdm import tqdm
+import unidecode
 
 letters = list(string.ascii_lowercase)
 
@@ -95,6 +96,9 @@ def sub_job(args: tuple):
     else:
         for rec in range(len(frame)):
 
+            frame[rec] = unidecode.unidecode(str(frame[rec]))
+
+
             if pd.isnull([frame[rec]]):
                 continue
             elif frame[rec].replace('-', '').isnumeric():
@@ -124,7 +128,7 @@ def update_values(frame: pd.DataFrame, prc: int, approx_prc: int):
 
     rec_to_update = int(records_num * prc / 100)
 
-    pool = mp.Pool(processes=4)
+    pool = mp.Pool(processes=mp.cpu_count()-1)
     output = dict(tqdm(pool.imap_unordered(sub_job, input_generator(frame, approx_prc))))
     srt = {b: i for i, b in enumerate(list(frame))}
     output = dict(sorted(output.items(), key=lambda t:srt[t[0]]))
